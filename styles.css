@@ -78,12 +78,12 @@ body::before {
 .the,
 .Next {
   color: white;
-  font-size: 60px;
+  font-size: 70px;
 }
 .Great,
 .Hero {
   color: rgb(255, 138, 42);
-  font-size: 80px;
+  font-size: 90px;
 }
 
 .header {
@@ -110,17 +110,17 @@ body::before {
   top: 5%;
   right: -5%;
   width: 60%;
-  max-width: 750px;
+  max-width: 650px;
   height: auto;
   z-index: 5;
   pointer-events: none;
-  filter: drop-shadow(-20px 10px 50px rgba(0, 0, 0, 0.8));
+  filter: drop-shadow(-20px 10px 50px rgba(208, 255, 250, 0.8));
 }
 
 .Stats {
   display: flex;
   justify-content: flex-start;
-  padding: 20px 0;
+  padding: 10px 0;
   margin: 40px 0;
   color: white;
   background: linear-gradient(
@@ -158,33 +158,16 @@ body::before {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem;
-  gap: 20px;
-}
-
-.program_cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1rem;
-  align-items: center;
-}
-.program_img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-  border-radius: 10px;
-}
-
-h4 {
-  text-align: center;
-  color: white;
-  margin-top: 10px;
+  padding: 40px 10%;
 }
 
 h3 {
   text-align: center;
   color: white;
   margin-top: 20px;
+  padding: 10px 0;
+  position: relative;
+  text-transform: uppercase;
   background: linear-gradient(
     to right,
     #08001534,
@@ -192,8 +175,43 @@ h3 {
     #080015e5,
     #08001534
   );
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
-.hero-card,
+h3::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -3px;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, rgba(255, 255, 255, 0.8), transparent);
+}
+h3::after {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: #f1c40f;
+  font-weight: bold;
+}
+
+.program_cards_container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-rows: minmax(250px, auto);
+  gap: 20px;
+  padding: 40px 10%;
+}
+
+/*marco*/
+.program_item {
+  position: relative;
+  overflow: hidden;
+  border: 2px solid #333;
+  border-radius: 12px;
+  background: #000;
+  height: 100%;
+}
 .program_item {
   border: 2px solid #333;
   border-radius: 12px;
@@ -202,51 +220,171 @@ h3 {
   background: #000;
   transition: border-color 0.3s ease;
 }
+.frame-3-up {
+  grid-column: span 4;
+}
+.why_choose p,
+.hero-info p {
+  position: relative;
+  padding-left: 15px;
+}
 
-.hero-img,
+.frame-4-down {
+  grid-column: span 3;
+}
+
 .program_img {
   width: 100%;
   height: 100%;
-  display: block;
   object-fit: cover;
-  object-position: center;
-  transition: transform 0.5s ease;
+  display: block;
+  transition: transform 0.6s ease;
 }
-.hero-card:hover,
+
+/*degradooo*/
+.program_overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 20%,
+    rgba(0, 0, 0, 0.5),
+    transparent
+  );
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 20px;
+  box-sizing: border-box;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.program_overlay h4 {
+  color: white;
+  margin: 0;
+  font-family: "Sublima", sans-serif;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  text-shadow: 2px 2px 4px rgba (0, 0, 0, 1);
+}
 .program_item:hover {
   border-color: #e62429;
-  box-shadow: 0 0 20px rgba(230, 36, 41, 0.4);
+}
+.program_item:hover .program_overlay {
+  opacity: 1;
+}
+.program_item:hover .program_img {
+  transform: scale(1.1);
+}
+.hero-card {
+  background: rgba(10, 10, 10, 0.95);
+  border: 1px solid #333;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition:
+    border-color 0.3s,
+    transform 0.3s;
+  filter: drop-shadow(-5px 5px 20px rgba(0, 0, 0, 0.8));
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  transition: transform 0.5s ease;
+}
+.hero-card:hover {
+  border-color: #e62429;
+  transform: translateY(-5px);
+}
+
+.hero-card:hover .hero-img {
+  transform: scale(1.05);
+}
+
+.hero-img-container {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+  position: relative;
 }
 .hero-card:hover .hero-img,
 .program_item:hover .program_img {
   transform: scale(1.1);
 }
 .hero-info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 15px;
-  flex-grow: 1;
+  padding: 20px;
+  background: #0a0a0a;
+  border-top: 1px solid #222;
 }
 
-.hero-info h4 {
-  font-family: "Sublima", sans-serif;
-  font-size: 1.5rem;
-  margin: 0.5rem 0;
-  color: #fff;
-  background: linear-gradient(#ff0000, #920000);
-}
-
-.hero-info button {
-  align-self: flex-end;
-  margin-top: auto;
-  padding: 10px 20px;
-  background: linear-gradient(90deg, #ff0000, #920000);
+.hero-name-banner {
+  background: linear-gradient(90deg, #e62429, #a30000);
   color: white;
-  cursor: pointer;
-  border: none;
+  margin: 0;
+  padding: 10px 15px;
   font-family: "Sublima", sans-serif;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
+  width: fit-content;
+  min-width: 70%;
+  position: relative;
+  z-index: 2;
+  margin-top: -20px;
+}
+.hero-info-content {
+  background: #080808;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.hero-stats-row p {
+  margin: 2px 0;
+  font-size: 0.8rem;
+  color: #bbb;
+}
+.hero-stats-row span {
+  color: white;
+  font-weight: bold;
+}
+.stars {
+  color: #ffb400 !important;
+}
+
+.btn-profile {
+  background: #e62429;
+  color: white;
+  text-decoration: none;
+  font-size: 0.7rem;
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.btn-profile:hover {
+  background: white;
+  color: #e62429;
+}
+.hero-stats-m {
+  margin-bottom: 15px;
+}
+.hero-stats-m p {
+  font-size: 0.85rem;
+  color: #888;
+  margin: 4px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .hero-info p {
@@ -254,6 +392,20 @@ h3 {
   font-size: 18px;
   margin: 0.25rem 0;
   color: white;
+}
+
+.learn-more {
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(90deg, #e62429, #8b0000);
+  border: none;
+  color: white;
+  font-family: "Sublima", sans-serif;
+  font-weight: bold;
+  cursor: pointer;
+  text-transform: uppercase;
+  clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
+  transition: filter 0.3s;
 }
 
 .whyUA {
@@ -270,7 +422,7 @@ h3 {
     #080015e5,
     #080015e5,
     #08001534
-  ); /* fondo semitransparente */
+  );
 }
 
 .huh {
