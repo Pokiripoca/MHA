@@ -510,7 +510,7 @@ h3::after {
 }
 .hero-stats-row p {
   margin: 2px 0;
-  font-size: 0.8rem;
+  font-size: 0.6rem;
   color: #bbb;
 }
 .hero-stats-row span {
@@ -549,7 +549,7 @@ h3::after {
 
 .hero-info p {
   font-family: "Sublima", sans-serif;
-  font-size: 18px;
+  font-size: 15px;
   margin: 0.25rem 0;
   color: white;
 }
