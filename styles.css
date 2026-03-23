@@ -169,19 +169,27 @@ body::before {
   clip-path: polygon(0 50%, 5% 0, 95% 0, 100% 50%, 95% 100%, 5% 100%);
   box-shadow: 0 0 10px rgba(46, 204, 113, 0.6);
 }
-
+.header-img {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
+}
 .header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  padding: 50px 10%;
   position: relative;
-  min-height: 85vh;
-  padding: 0 10%;
   overflow: visible;
+  z-index: 10;
 }
+
 .header-info {
-  flex: 0 0 50%;
-  text-align: left;
+  flex: 1;
   z-index: 2;
+  position: relative;
 }
 .header-info h1 {
   line-height: 0.9;
@@ -196,15 +204,18 @@ body::before {
 }
 
 .DekuAction1 {
-  position: absolute;
-  top: 5%;
-  right: -5%;
-  width: 60%;
-  max-width: 650px;
+  width: 110%;
+  max-width: 600px;
   height: auto;
-  z-index: 5;
-  pointer-events: none;
-  filter: drop-shadow(-20px 10px 50px rgba(208, 255, 250, 0.8));
+  margin-left: -80px;
+
+  filter: drop-shadow(20px 10px 30px rgba(0, 0, 0, 0.5));
+
+  transform: rotate(-2deg);
+  transition: transform 0.3s ease;
+}
+.DekuAction1:hover {
+  transform: scale(1.05) rotate(0deg);
 }
 
 .button_inicio {
@@ -267,10 +278,15 @@ body::before {
     #080015e5,
     #08001534
   );
+  z-index: 1;
+  margin-top: -50px;
+  position: relative;
 }
 .stat-item {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
   border-right: 1px solid rgba(255, 255, 255, 0.3);
   padding: 0 40px;
 }
@@ -295,6 +311,7 @@ body::before {
   font-size: 32px;
   font-weight: 900;
   margin-bottom: 5px;
+  display: block;
 }
 
 .featured {
@@ -696,8 +713,7 @@ h3::after {
   z-index: 2000;
 }
 
-/*Individuales
-/* Contenedor dividido para la cabecera */
+/*Individuales*/
 .profile-header-split {
   display: flex;
   align-items: center;
@@ -707,7 +723,6 @@ h3::after {
   margin-bottom: 50px;
 }
 
-/* Lado Izquierdo: Imagen */
 .profile-img-side {
   flex: 1;
   position: relative;
@@ -717,7 +732,6 @@ h3::after {
   width: 100%;
   max-width: 450px;
   height: auto;
-  border-left: 5px solid #2ecc71; /* Verde Deku */
   filter: drop-shadow(10px 10px 20px rgba(0, 0, 0, 0.5));
   clip-path: polygon(0 0, 100% 0, 90% 100%, 0% 100%);
 }
@@ -728,22 +742,20 @@ h3::after {
   gap: 10px;
 }
 
-/* Lado Derecho: Nombre Gigante */
 .profile-name-side {
   flex: 1.5;
-  text-align: right; /* Alineado a la derecha */
+  text-align: right;
 }
 
 .hero-name-giant {
   font-family: "Sublima", sans-serif;
-  font-size: 100px; /* Tamaño grande */
+  font-size: 100px;
   font-weight: 900;
   text-transform: uppercase;
   line-height: 0.85;
   margin: 0;
   font-style: italic;
 
-  /* Efecto de Degradado en el Texto */
   background: linear-gradient(to bottom, #ffffff 30%, #2ecc71 90%);
   -webkit-background-clip: text;
   background-clip: text;
@@ -768,7 +780,6 @@ h3::after {
   opacity: 0.8;
 }
 
-/* Ajuste para Móviles */
 @media (max-width: 768px) {
   .profile-header-split {
     flex-direction: column;
@@ -823,7 +834,7 @@ h3::after {
   clip-path: polygon(10% 0, 100% 0, 90% 100%, 0 100%);
 }
 
-/* STATS BARS */
+/* STATS  */
 .stats-container {
   background: rgba(0, 0, 0, 0.5);
   padding: 30px;
@@ -870,26 +881,23 @@ h3::after {
   text-align: center;
   display: flex;
   flex-direction: column;
-  height: 100%; /* Importante para que midan lo mismo */
+  height: 100%;
   transition: 0.3s;
 }
 
 .gallery-frame {
   position: relative;
   width: 100%;
-  /* ALTURA FIJA: Esto obliga a que todas midan igual visualmente */
   height: 350px;
   overflow: hidden;
   border-bottom: 3px solid #e62429;
-  /* Mantenemos tu clip-path estilo UA */
   clip-path: polygon(0 0, 100% 0, 100% 90%, 90% 100%, 0 100%);
 }
 .gallery-frame img {
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-  object-position: center; /* Centra el recorte */
+  object-position: top;
   transition: transform 0.5s;
 }
 .badge-label {
@@ -922,20 +930,12 @@ h3::after {
   box-shadow: 0 0 20px rgba(255, 234, 0, 0.4);
 }
 
-/* RESPONSIVE: Para que no se aplasten en celular */
-@media (max-width: 992px) {
-  .gallery-container {
-    /* En tablets, 2 columnas */
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
 @media (max-width: 600px) {
   .gallery-container {
-    /* En celulares, 1 columna (vertical) */
     grid-template-columns: 1fr;
   }
   .gallery-frame {
-    height: 250px; /* Reducimos la altura en móvil */
+    height: 250px;
   }
 }
 .hero-mentors-section {
@@ -951,7 +951,6 @@ h3::after {
 
 .mentors-grid {
   display: grid;
-  /* Dos columnas iguales para los maestros */
   grid-template-columns: repeat(2, 1fr);
   gap: 40px;
   margin-top: 30px;
@@ -964,7 +963,7 @@ h3::after {
   background: rgba(10, 10, 15, 0.9);
   border: 1px solid #333;
   padding: 20px;
-  clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%); /* Marco recortado */
+  clip-path: polygon(5% 0, 100% 0, 95% 100%, 0 100%);
   transition: 0.3s;
 }
 
@@ -975,15 +974,15 @@ h3::after {
   flex-shrink: 0;
   border-radius: 50%;
   overflow: hidden;
-  border: 3px solid #ffea00; /* Borde amarillo UA */
+  border: 3px solid #ffea00;
   filter: drop-shadow(0 0 10px rgba(255, 234, 0, 0.3));
 }
 
 .mentor-img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* ¡VITAL! Evita que se deforme */
-  object-position: center; /* Centra el rostro */
+  object-fit: cover;
+  object-position: top;
 }
 
 .mentor-badge {
@@ -1087,9 +1086,8 @@ h3::after {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: transparent; /* Fallback */
+  color: transparent;
 }
-/* Contenedor general de stats */
 .stats-container {
   margin-top: 20px;
 }
@@ -1117,12 +1115,81 @@ h3::after {
 }
 .bar-bakugo {
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    #e62429,
-    #ff8a2a,
-    #ffea00
-  ); /* Rojo a Amarillo */
+  background: linear-gradient(90deg, #e62429, #ff8a2a, #ffea00);
   box-shadow: 0 0 10px rgba(255, 138, 42, 0.4);
   border-radius: 5px;
+}
+/* kiri */
+.gradient-kirishima {
+  background: linear-gradient(
+    to bottom,
+    #ffffff 20%,
+    #d32f2f 70%,
+    #8b0000 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/*kiri*/
+.aHero {
+  height: 100%;
+  background: linear-gradient(90deg, #8b0000, #d32f2f, #ff5252);
+  box-shadow: 0 0 10px rgba(211, 47, 47, 0.4);
+  border-radius: 5px;
+}
+/*kiri*/
+.gradient-shinso {
+  background: linear-gradient(
+    to bottom,
+    #ffffff 20%,
+    #9b59b6 70%,
+    #4b0082 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/*  Shinso */
+.bar-shinso {
+  height: 100%;
+  background: linear-gradient(90deg, #4b0082, #8e44ad, #dcdde1);
+  box-shadow: 0 0 10px rgba(155, 89, 182, 0.4);
+  border-radius: 5px;
+}
+
+.btn-back {
+  display: inline-block;
+  padding: 10px 25px;
+  background-color: #1a1a1a;
+  color: #ff9d00;
+  text-decoration: none;
+  border: 1px solid #ff9d00;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.btn-back:hover {
+  background-color: #ff9d00;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(255, 198, 76, 0.5);
+}
+.ua-footer {
+  background-color: #0a0a0a;
+  color: #555;
+  padding: 30px 0;
+  border-top: 1px solid #222;
+  text-align: center;
+  font-size: 12px;
+}
+
+.footer-links a {
+  color: #ffc400;
+  text-decoration: none;
+  margin-left: 15px;
 }
