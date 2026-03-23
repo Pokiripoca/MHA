@@ -1,3 +1,4 @@
+//constantes
 const modalTraining = document.getElementById("startTraining");
 const modalTrailer = document.getElementById("watchTrailer");
 
@@ -31,3 +32,33 @@ window.onclick = function (event) {
     modalTrailer.style.display = "none";
   }
 };
+
+//boton de enviado
+const contactoForm = document.getElementById("contact-form");
+
+contactoForm.addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const nombre = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const mensaje = document.getElementById("message").value;
+
+  const contenidoTxt = `Nuevo Reporte UA:
+----------------------
+Nombre: ${nombre}
+Email: ${email}
+Mensaje: ${mensaje}
+----------------------`;
+  const blob = new Blob([contenidoTxt], { type: "text/plain" });
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement("a");
+
+  a.href = url;
+  a.download = `Reporte_${nombre}.txt`;
+  a.click();
+
+  window.URL.revokeObjectURL(url);
+  contactoForm.reset();
+
+  alert("Tu reporte ha sido generado y descargado.");
+});
